@@ -5,7 +5,7 @@ import java.util.concurrent.ConcurrentMap;
 
 
 
-public class InMemoryStorage<N , K> implements Storage <N , K> {
+public class InMemoryStorage<K, N> implements Storage <K , N> {
 
     ConcurrentMap<K , N> storageMap;
     int initialCapacity;
@@ -16,17 +16,19 @@ public class InMemoryStorage<N , K> implements Storage <N , K> {
     }
 
     @Override
-    public K get(N key) {
-        return null;
+    public N get(K key) {
+        return storageMap.getOrDefault(key , null);
     }
 
     @Override
-    public boolean add(K node) {
-        return false;
+    public void  add (K key , N node) {
+         storageMap.put(key, node);
     }
 
     @Override
-    public boolean remove(K node) {
-        return false;
+    public void remove(K key) {
+        storageMap.remove(key);
     }
+
+
 }

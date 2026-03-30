@@ -2,6 +2,6 @@ package com.akshat.cache.core.storage;
 
 public interface Storage <K , N> {
     N get (K key);
-    boolean add (N node);
-    boolean remove(N node);
+    void add (K  key , N node);
+    void remove(K key);
 }

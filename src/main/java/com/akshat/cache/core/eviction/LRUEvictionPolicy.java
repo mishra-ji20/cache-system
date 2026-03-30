@@ -1,17 +1,28 @@
 package com.akshat.cache.core.eviction;
 
-import java.util.LinkedList;
-import java.util.List;
-import java.util.concurrent.ConcurrentMap;
+import com.akshat.cache.core.node.CacheNode;
 
-public class LRUEvictionPolicy<N> implements EvictionPolicy <N> {
-    List<N> lruOrdered;
-    N dummyHead;
-    N dummyTail;
 
+
+
+public class LRUEvictionPolicy <K , V> implements EvictionPolicy <K , V>  {
+    CacheNode<K , V> dummyHead;
+    CacheNode<K , V> dummyTail;
+    int currSize;
+    public LRUEvictionPolicy(){
+        dummyHead = new CacheNode<>(null , null , null , null);
+        dummyTail = new CacheNode<>(null , null , null  , null);
+        dummyHead.setNext(dummyTail);
+        dummyTail.setNext(dummyHead);
+        currSize = 0 ;
+    }
+
+
+    //checks to add if node exists or not should be made in cache Application
     @Override
-    public boolean keysAccessed(N node) {
-        return false;
+    public void keysAccessed(CacheNode<K, V> node) {
+
+
     }
 
     @Override

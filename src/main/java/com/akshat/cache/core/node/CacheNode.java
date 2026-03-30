@@ -17,21 +17,21 @@ public class CacheNode<K , V> {
         this.prev = prev;
         creationTime = Instant.now().toEpochMilli();
     }
+    public CacheNode (K key , V value ){
+        this.key = key;
+        this.value = value;
+        next = null;
+        prev = null;
+        creationTime = Instant.now().toEpochMilli();
+
+    }
 
     public K getKey() {
         return key;
     }
 
-    public void setKey(K key) {
-        this.key = key;
-    }
-
     public V getValue() {
         return value;
-    }
-
-    public void setValue(V value) {
-        this.value = value;
     }
 
     public CacheNode<K, V> getNext() {

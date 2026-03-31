@@ -57,4 +57,5 @@ public class CacheNode<K , V> {
     public void setCreationTime(long creationTime) {
         this.creationTime = creationTime;
     }
+    public void setValue( V value){ this.value = value; }
 }

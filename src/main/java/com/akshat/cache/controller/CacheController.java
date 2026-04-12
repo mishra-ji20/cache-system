@@ -22,6 +22,9 @@ public class CacheController {
     public CacheResponseDTO getValue(@PathVariable String key){
         String value = cacheService.get(key);
         CacheResponseDTO cacheResponse = new CacheResponseDTO();
+        if(value == null){
+            return cacheResponse;
+        }
         try {
             cacheResponse.setValue(objectMapper.readTree(value));
         }catch (JsonProcessingException e){

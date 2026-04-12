@@ -24,8 +24,12 @@ public class  InMemoryCache <K, V>  implements Cache <K , V> {
     @Override
     public V get(K key) {
         CacheNode <K , V> node = getHelper(key);
-        evictionPolicy.onAccess(node);
-        return node == null ? null : node.getValue();
+        if(node != null){
+            evictionPolicy.onAccess(node);
+            return node.getValue();
+        }
+
+        return null;
     }
 
     @Override
